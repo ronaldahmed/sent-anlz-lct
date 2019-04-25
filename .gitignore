@@ -1,0 +1,12 @@
+emb/
+models/
+__pycache__/
+amazon_balanced_two_domains/
+soft_patterns/data/
+soft_patterns/models/
+soft_patterns/logs/
+soft_patterns/amazon_reviews/
+soft_patterns/amazon_reviews/*
+soft_patterns/__pycache__/
+*.tar.gz
+
