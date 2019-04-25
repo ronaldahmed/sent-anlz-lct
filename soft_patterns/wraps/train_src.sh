@@ -4,6 +4,8 @@
 
 conda activate sopa
 
+cd $HOME/sent-anlz-lct/soft_patterns
+
 python soft_patterns.py \
 -e ../emb/glove.840B.300d.txt \
 --batch_size 20 -i 10 \

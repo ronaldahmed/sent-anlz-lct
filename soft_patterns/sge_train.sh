@@ -16,7 +16,7 @@ sge_rnd_search.sh
 
 
 # training on src data
-qsub -q 'gpu*' -cwd -l gpu=1,gpu_cc_min3.5=1,gpu_ram=8G,mem_free=80G,act_mem_free=80G,h_data=100G -p -50 \
+qsub -q 'gpu*' -cwd -l gpu=1,gpu_cc_min3.5=1,gpu_ram=8G,mem_free=80G,act_mem_free=80G,h_data=100G -p -100 \
 -o $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.out \
 -e $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.err \
-train_src.sh
+wraps/train_src.sh
