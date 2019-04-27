@@ -293,6 +293,7 @@ def train_boostrap(
 def predict_unlabeled(model,data,batch_size,gpu):
     n = float(len(data))
     pred = []
+    top_n = batch_size // 2
     for batch in chunked_sorted(data, batch_size):
         batch_obj = Batch([x for x, y in batch], model.embeddings, to_cuda(gpu))
         predicted = model.predict(batch_obj, debug)
