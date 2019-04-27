@@ -8,6 +8,8 @@
 
 
 from soft_patterns import *
+from collections import Counter
+import pdb
 
 
 def main_bootstrap(args):
@@ -188,10 +190,11 @@ def train_boostrap(
 
     for it_bst in range(num_boots_iterations):
       unl_train_input_chunk = unl_train_input[:(it_bst+1)*n_unl_chunk]
-      silver_labels = predict_unlabeled(model,unl_train_input_chunk,batch_size,gpu)
-      unl_train_data = list(zip(unl_train_input, silver_labels))
-      train_boost_data = train_data + unl_train_data
-      print("Added %d inst to training data..." % len(unl_train_data))
+      unl_train_data = list(zip(unl_train_input, len(unl_train_input)*[0]))
+      silver_data = predict_unlabeled(model,unl_train_data,batch_size,gpu,max_len,word_dropout)
+      train_boost_data = train_data + silver_data
+      print("Added %d inst to training data..." % len(silver_data))
+      print("Label dist in silver data:",Counter([x[1] for x in silver_data]).most_common() )
 
       for it in range(num_iterations):
           np.random.shuffle(train_boost_data)
@@ -267,7 +270,7 @@ def train_boostrap(
               best_dev_loss = dev_loss
               best_dev_loss_index = 0
               if model_save_dir is not None:
-                  model_save_file = os.path.join(model_save_dir, "{}_{}.pth".format(model_file_prefix, it))
+                  model_save_file = os.path.join(model_save_dir, "{}_{}_{}.pth".format(model_file_prefix,it_bst,it))
                   print("saving model to", model_save_file)
                   torch.save(model.state_dict(), model_save_file)
           else:
@@ -290,16 +293,24 @@ def train_boostrap(
     return model
 
 
-def predict_unlabeled(model,data,batch_size,gpu):
+def predict_unlabeled(model,
+          data,
+          batch_size,
+          gpu,
+          max_len=-1,
+          word_dropout=0):
     n = float(len(data))
     pred = []
-    top_n = batch_size // 2
+    perc = 0.8
+    top_n = int(perc * len(data))
     for batch in chunked_sorted(data, batch_size):
-        batch_obj = Batch([x for x, y in batch], model.embeddings, to_cuda(gpu))
-        predicted = model.predict(batch_obj, debug)
-        # TODO: check return format here
-        pred.extend(predicted)
-    return pred
+        batch_obj = Batch([x for x, y in batch], model.embeddings, to_cuda(gpu), word_dropout, max_len)
+        #predicted = model.predict(batch_obj, debug)
+        pred_lab_val = model.get_pred_scores(batch_obj)
+        pred.extend(list(zip(pred_lab_val,batch)))
+    pred.sort(key=lambda x: x[0][1], reverse=True)
+    silver_data = [(x[1][0],x[0][0]) for x in pred[:top_n]]
+    return silver_data
 
 
 def boostrapping_arg_parser():

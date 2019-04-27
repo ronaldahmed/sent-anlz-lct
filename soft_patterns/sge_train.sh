@@ -20,3 +20,10 @@ qsub -q 'gpu*' -cwd -l gpu=1,gpu_cc_min3.5=1,gpu_ram=8G,mem_free=80G,act_mem_fre
 -o $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.out \
 -e $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.err \
 wraps/train_src.sh
+
+
+# training boostrap
+qsub -q 'gpu*' -cwd -l gpu=1,gpu_cc_min3.5=1,gpu_ram=2G,mem_free=10G,act_mem_free=10G,h_data=15G -p -60 \
+-o $HOME/sent-anlz-lct/soft_patterns/models/boostrap/log.out \
+-e $HOME/sent-anlz-lct/soft_patterns/models/boostrap/log.err \
+wraps/train_bst.sh

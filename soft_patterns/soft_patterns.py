@@ -15,7 +15,7 @@ import torch
 from torch import FloatTensor, LongTensor, cat, mm, norm, randn, zeros, ones
 from torch.autograd import Variable
 from torch.nn import Module, Parameter, NLLLoss, LSTM
-from torch.nn.functional import sigmoid, log_softmax
+from torch.nn.functional import sigmoid, log_softmax, softmax
 from torch.nn.utils.rnn import pad_packed_sequence
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
@@ -24,6 +24,8 @@ from data import read_embeddings, read_docs, read_labels, vocab_from_text, Vocab
     END_TOKEN_IDX
 from mlp import MLP, mlp_arg_parser
 from util import shuffled_chunked_sorted, identity, chunked_sorted, to_cuda, right_pad
+
+import pdb
 
 CW_TOKEN = "CW"
 EPSILON = 1e-10
@@ -469,6 +471,15 @@ class SoftPatternClassifier(Module):
     def predict(self, batch, debug=0):
         output = self.forward(batch, debug).data
         return [int(x) for x in argmax(output)]
+
+    def get_pred_scores(self,batch):
+        output = self.forward(batch, debug=0).data
+        output = softmax(output).data
+        max_vals,pred_labs = torch.max(output, 1)
+        max_vals = [float(x) for x in max_vals]
+        pred_labs = [int(x) for x in pred_labs]
+        return list(zip(pred_labs,max_vals))
+
 
 
 def train_batch(model, batch, num_classes, gold_output, optimizer, loss_function, gpu=False, debug=0, dropout=None):

@@ -6,7 +6,7 @@ conda activate sopa
 python bootstrap.py \
 -e ../emb/glove.840B.300d.txt \
 --batch_size 20 \
--i 5 -bi 5 \
+-i 5 -bi 3 \
 -p 6-10_5-10_4-10 \
 --dropout 0.0016912395027359473 \
 --learning_rate 0.0001475142447988253 \
