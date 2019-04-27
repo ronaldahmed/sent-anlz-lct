@@ -3,6 +3,9 @@
 
 conda activate sopa
 
+cd $HOME/sent-anlz-lct/soft_patterns
+
+
 python bootstrap.py \
 -e ../emb/glove.840B.300d.txt \
 --batch_size 20 \
