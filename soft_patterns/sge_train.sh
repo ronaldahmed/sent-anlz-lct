@@ -20,3 +20,5 @@ qsub -q 'gpu*' -cwd -l gpu=1,gpu_cc_min3.5=1,gpu_ram=8G,mem_free=80G,act_mem_fre
 -o $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.out \
 -e $HOME/sent-anlz-lct/soft_patterns/models/movies-src/log.err \
 wraps/train_src.sh
+
+

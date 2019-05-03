@@ -1,0 +1,29 @@
+\begin{thebibliography}{4}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Kingma and Ba(2014)}]{kingma2014adam}
+Diederik~P Kingma and Jimmy Ba. 2014.
+\newblock Adam: A method for stochastic optimization.
+\newblock \emph{arXiv preprint arXiv:1412.6980}.
+
+\bibitem[{McAuley et~al.(2015)McAuley, Targett, Shi, and Van
+  Den~Hengel}]{mcauley2015image}
+Julian McAuley, Christopher Targett, Qinfeng Shi, and Anton Van Den~Hengel.
+  2015.
+\newblock Image-based recommendations on styles and substitutes.
+\newblock In \emph{Proceedings of the 38th International ACM SIGIR Conference
+  on Research and Development in Information Retrieval}, pages 43--52. ACM.
+
+\bibitem[{Pennington et~al.(2014)Pennington, Socher, and
+  Manning}]{pennington2014glove}
+Jeffrey Pennington, Richard Socher, and Christopher Manning. 2014.
+\newblock Glove: Global vectors for word representation.
+\newblock In \emph{Proceedings of the 2014 conference on empirical methods in
+  natural language processing (EMNLP)}, pages 1532--1543.
+
+\bibitem[{Schwartz et~al.(2018)Schwartz, Thomson, and Smith}]{schwartz2018sopa}
+Roy Schwartz, Sam Thomson, and Noah~A Smith. 2018.
+\newblock Sopa: Bridging cnns, rnns, and weighted finite-state machines.
+\newblock In \emph{Proceedings of ACL}.
+
+\end{thebibliography}
