@@ -1,0 +1,29 @@
+qrsh -q 'gpu*' -l gpu=1,gpu_ram=8G -pty yes bash -l \
+wraps/train_standalone.sh
+
+
+1st iter
+setup sopa + globe
+	run baseline
+	code hyperparam search
+	run final models
+
+init barbara's models & baselines
+	check how long it took to run
+	check output
+
+downsample balanced per label
+	10k training
+	5k  val
+test tgt: 5k unlabeled 
+		  5k for val
+		  rest for eval
+
+analize run -> get acc / loss
+
+
+2nd iter
+sopa + elmo / bert
+	profile time in hyper tuning
+		too long? leave w previous params
+
