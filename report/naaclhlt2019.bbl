@@ -1,10 +1,51 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{14}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Blitzer et~al.(2007)Blitzer, Dredze, and
+  Pereira}]{blitzer2007biographies}
+John Blitzer, Mark Dredze, and Fernando Pereira. 2007.
+\newblock Biographies, bollywood, boom-boxes and blenders: Domain adaptation
+  for sentiment classification.
+\newblock In \emph{Proceedings of the 45th annual meeting of the association of
+  computational linguistics}, pages 440--447.
+
+\bibitem[{Britz et~al.(2017)Britz, Le, and Pryzant}]{britz2017effective}
+Denny Britz, Quoc Le, and Reid Pryzant. 2017.
+\newblock Effective domain mixing for neural machine translation.
+\newblock In \emph{Proceedings of the Second Conference on Machine
+  Translation}, pages 118--126.
+
+\bibitem[{Chao et~al.(2018)Chao, Hu, and Sha}]{chao2018cross}
+Wei-Lun Chao, Hexiang Hu, and Fei Sha. 2018.
+\newblock Cross-dataset adaptation for visual question answering.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 5716--5725.
+
+\bibitem[{Etchegoyhen et~al.(2018)Etchegoyhen, Torn{\'e}, Azpeitia, Garcia, and
+  Matamala}]{etchegoyhen2018evaluating}
+Thierry Etchegoyhen, Anna~Fern{\'a}ndez Torn{\'e}, Andoni Azpeitia,
+  Eva~Mart{\'\i}nez Garcia, and Anna Matamala. 2018.
+\newblock Evaluating domain adaptation for machine translation across
+  scenarios.
+\newblock In \emph{Proceedings of the Eleventh International Conference on
+  Language Resources and Evaluation (LREC-2018)}.
+
+\bibitem[{Fu et~al.(2018)Fu, Tan, Peng, Zhao, and Yan}]{fu2018style}
+Zhenxin Fu, Xiaoye Tan, Nanyun Peng, Dongyan Zhao, and Rui Yan. 2018.
+\newblock Style transfer in text: Exploration and evaluation.
+\newblock In \emph{Thirty-Second AAAI Conference on Artificial Intelligence}.
 
 \bibitem[{Kingma and Ba(2014)}]{kingma2014adam}
 Diederik~P Kingma and Jimmy Ba. 2014.
 \newblock Adam: A method for stochastic optimization.
 \newblock \emph{arXiv preprint arXiv:1412.6980}.
+
+\bibitem[{McAuley and Leskovec(2013)}]{mcauley2013hidden}
+Julian McAuley and Jure Leskovec. 2013.
+\newblock Hidden factors and hidden topics: understanding rating dimensions
+  with review text.
+\newblock In \emph{Proceedings of the 7th ACM conference on Recommender
+  systems}, pages 165--172. ACM.
 
 \bibitem[{McAuley et~al.(2015)McAuley, Targett, Shi, and Van
   Den~Hengel}]{mcauley2015image}
@@ -14,6 +55,14 @@ Julian McAuley, Christopher Targett, Qinfeng Shi, and Anton Van Den~Hengel.
 \newblock In \emph{Proceedings of the 38th International ACM SIGIR Conference
   on Research and Development in Information Retrieval}, pages 43--52. ACM.
 
+\bibitem[{Peng et~al.(2018)Peng, Ghazvininejad, May, and
+  Knight}]{peng-etal-2018-towards}
+Nanyun Peng, Marjan Ghazvininejad, Jonathan May, and Kevin Knight. 2018.
+\newblock \href {https://doi.org/10.18653/v1/W18-1505} {Towards controllable
+  story generation}.
+\newblock In \emph{Proceedings of the First Workshop on Storytelling}, pages
+  43--49, New Orleans, Louisiana. Association for Computational Linguistics.
+
 \bibitem[{Pennington et~al.(2014)Pennington, Socher, and
   Manning}]{pennington2014glove}
 Jeffrey Pennington, Richard Socher, and Christopher Manning. 2014.
@@ -21,9 +70,34 @@ Jeffrey Pennington, Richard Socher, and Christopher Manning. 2014.
 \newblock In \emph{Proceedings of the 2014 conference on empirical methods in
   natural language processing (EMNLP)}, pages 1532--1543.
 
+\bibitem[{Ruder and Plank(2018)}]{ruder2018strong}
+Sebastian Ruder and Barbara Plank. 2018.
+\newblock Strong baselines for neural semi-supervised learning under domain
+  shift.
+\newblock In \emph{Proceedings of the 56th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 1044--1054.
+
 \bibitem[{Schwartz et~al.(2018)Schwartz, Thomson, and Smith}]{schwartz2018sopa}
 Roy Schwartz, Sam Thomson, and Noah~A Smith. 2018.
 \newblock Sopa: Bridging cnns, rnns, and weighted finite-state machines.
 \newblock In \emph{Proceedings of ACL}.
+
+\bibitem[{Yang et~al.(2018)Yang, Hu, Dyer, Xing, and
+  Berg-Kirkpatrick}]{NIPS2018_7959}
+Zichao Yang, Zhiting Hu, Chris Dyer, Eric~P Xing, and Taylor Berg-Kirkpatrick.
+  2018.
+\newblock \href
+  {http://papers.nips.cc/paper/7959-unsupervised-text-style-transfer-using-language-models-as-discriminators.pdf}
+  {{Unsupervised Text Style Transfer using Language Models as Discriminators}}.
+\newblock In S~Bengio, H~Wallach, H~Larochelle, K~Grauman, N~Cesa-Bianchi, and
+  R~Garnett, editors, \emph{Advances in Neural Information Processing Systems
+  31}, pages 7287--7298. Curran Associates, Inc.
+
+\bibitem[{Zhao and Liu(2018)}]{zhao2018finding}
+Helen~Jiahe Zhao and Jiamou Liu. 2018.
+\newblock Finding answers from the word of god: Domain adaptation for neural
+  networks in biblical question answering.
+\newblock In \emph{2018 International Joint Conference on Neural Networks
+  (IJCNN)}, pages 1--8. IEEE.
 
 \end{thebibliography}

@@ -46,20 +46,30 @@
 
 \section{Introduction}
 
-what is domain adaptation
+%what is domain adaptation
 
-what is sent analizis
+The objective of domain adaptation techniques is to adapt a hypothesis trained on a source data distribution so that it can perform well on a related target distribution.
+These techniques have been applied to a variety of NLP tasks such as sentiment analysis \cite{blitzer2007biographies,mcauley2013hidden,mcauley2015image,ruder2018strong}, style transfer in text generation \cite{fu2018style,NIPS2018_7959,peng-etal-2018-towards}, textual and visual question answering \cite{chao2018cross,zhao2018finding}, and machine translation \cite{etchegoyhen2018evaluating,britz2017effective}, to name a few.
 
-why is domain adp important for sent analisis
+In the case of sentiment analysis of online user reviews, previous work has sought effective ways of transfer learning between product categories \cite{blitzer2007biographies,ruder2018strong}. However, the task has been proven to be challenging since sentiment is expressed differently in different domains.
+For instance, \citet{blitzer2007biographies} identifies three types of feature behaviour across domains: (a) features that are highly predictive in the source domain but not in the target domain, (b) features that are highly predictive in the target domain but not in the source domain, and (c) features that positively predictive in the source domain but negatively predictive in the target domain (or viceversa).
 
-what we are introducing
-	build upon ---
+In this report, we focus on unsupervised domain adaptation for the task of sentiment analysis, transfering from a single source domain into a single target domain.
+We build upon the recently proposed {\sc SoPa} \cite{schwartz2018sopa}, a neural architecture that mimic the behaviour of a Weighted Finite State Machine.
+{\sc SoPa} is able to learn soft lexical patterns, i.e.\ word patterns that might include a (possibly empty) wild card.
+We investigate the performance of {\sc SoPa} under a self-training setup following calibration procedures proposed by \citet{ruder2018strong}.
+Experiments on Amazon online reviews of two product categires show promising results.
 
-on what data, which domains, method, 
-contributions?
+% what is sent analizis
+% why is domain adp important for sent analisis
+% what we are introducing
+%	 build upon ---
+% on what data, which domains, method, 
+% contributions?
 
 
 \section{Related Work}
+
 
 sopa does well on sent analisis on one-domain
 
