@@ -8,44 +8,46 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: naaclhlt2019.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 14 entries,
+Warning--can't use both volume and number fields in aue2005customizing
+You've used 18 entries,
             3571 wiz_defined-function locations,
-            773 strings with 8872 characters,
-and the built_in function-call counts, 11494 in all, are:
-= -- 1030
-> -- 505
-< -- 14
-+ -- 158
-- -- 144
-* -- 725
-:= -- 1629
-add.period$ -- 61
-call.type$ -- 14
-change.case$ -- 142
-chr.to.int$ -- 14
-cite$ -- 14
-duplicate$ -- 803
-empty$ -- 850
-format.name$ -- 195
-if$ -- 2575
+            797 strings with 9772 characters,
+and the built_in function-call counts, 14821 in all, are:
+= -- 1326
+> -- 660
+< -- 19
++ -- 207
+- -- 189
+* -- 939
+:= -- 2093
+add.period$ -- 79
+call.type$ -- 18
+change.case$ -- 185
+chr.to.int$ -- 18
+cite$ -- 19
+duplicate$ -- 1038
+empty$ -- 1090
+format.name$ -- 254
+if$ -- 3317
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 156
-newline$ -- 74
-num.names$ -- 58
-pop$ -- 382
+missing$ -- 204
+newline$ -- 94
+num.names$ -- 74
+pop$ -- 498
 preamble$ -- 1
-purify$ -- 102
+purify$ -- 133
 quote$ -- 0
-skip$ -- 559
+skip$ -- 715
 stack$ -- 0
-substring$ -- 474
-swap$ -- 417
-text.length$ -- 10
+substring$ -- 598
+swap$ -- 539
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 126
-warning$ -- 0
-while$ -- 73
+type$ -- 162
+warning$ -- 1
+while$ -- 94
 width$ -- 0
-write$ -- 187
+write$ -- 241
+(There was 1 warning)

@@ -1,5 +1,19 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{18}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aue and Gamon(2005)}]{aue2005customizing}
+Anthony Aue and Michael Gamon. 2005.
+\newblock Customizing sentiment classifiers to new domains: A case study.
+\newblock In \emph{Proceedings of recent advances in natural language
+  processing (RANLP)}, volume~1, pages 2--1. Citeseer.
+
+\bibitem[{Barnes et~al.(2018)Barnes, Klinger, and
+  im~Walde}]{barnes2018projecting}
+Jeremy Barnes, Roman Klinger, and Sabine~Schulte im~Walde. 2018.
+\newblock Projecting embeddings for domain adaption: Joint modeling of
+  sentiment analysis in diverse domains.
+\newblock In \emph{Proceedings of the 27th International Conference on
+  Computational Linguistics}, pages 818--830.
 
 \bibitem[{Blitzer et~al.(2007)Blitzer, Dredze, and
   Pereira}]{blitzer2007biographies}
@@ -20,6 +34,14 @@ Wei-Lun Chao, Hexiang Hu, and Fei Sha. 2018.
 \newblock Cross-dataset adaptation for visual question answering.
 \newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 5716--5725.
+
+\bibitem[{Davidov et~al.(2010)Davidov, Tsur, and
+  Rappoport}]{davidov2010enhanced}
+Dmitry Davidov, Oren Tsur, and Ari Rappoport. 2010.
+\newblock Enhanced sentiment learning using twitter hashtags and smileys.
+\newblock In \emph{Proceedings of the 23rd international conference on
+  computational linguistics: posters}, pages 241--249. Association for
+  Computational Linguistics.
 
 \bibitem[{Etchegoyhen et~al.(2018)Etchegoyhen, Torn{\'e}, Azpeitia, Garcia, and
   Matamala}]{etchegoyhen2018evaluating}
@@ -69,6 +91,13 @@ Jeffrey Pennington, Richard Socher, and Christopher Manning. 2014.
 \newblock Glove: Global vectors for word representation.
 \newblock In \emph{Proceedings of the 2014 conference on empirical methods in
   natural language processing (EMNLP)}, pages 1532--1543.
+
+\bibitem[{Peters et~al.(2018)Peters, Neumann, Iyyer, Gardner, Clark, Lee, and
+  Zettlemoyer}]{Peters:2018}
+Matthew~E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark,
+  Kenton Lee, and Luke Zettlemoyer. 2018.
+\newblock Deep contextualized word representations.
+\newblock In \emph{Proc. of NAACL}.
 
 \bibitem[{Ruder and Plank(2018)}]{ruder2018strong}
 Sebastian Ruder and Barbara Plank. 2018.
