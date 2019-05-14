@@ -90,7 +90,29 @@ The performance of {\sc SoPa} is tested by \citet{schwartz2018sopa} for the task
 
 A soft pattern, as introduced by \citet{davidov2010enhanced}, is a pattern that supports partial matching on a given span of text by skipping some words of the pattern.
 Let WFSA-$\epsilon$ be a WFSA that support $\epsilon$ transitions (a transition that skips an input word) as well as self-loops (a transition that repeats the insertion of an input word).
-Let WFSA-$\epsilon$ be defined by the tuple $F = \langle S,V,\pi, T, \eta \rangle$ where $S$ is the set of states of size $d$, $V$ is the vocabulary, $ \pi \in \mathbb{R}^d $ is an initial weight vector, $T: (V \cup \epsilon) \to \mathbb{R}^{d \times d}$
+Let WFSA-$\epsilon$ be defined by the tuple $F = \langle S,V,\pi, T, \eta \rangle$ where $S$ is the set of states with size $d$, $V$ is the vocabulary, $ \pi \in \mathbb{R}^d $ is the weight vector for initial states, $T: (V \cup \{\epsilon\} ) \to \mathbb{R}^{d \times d}$ is a transition weight function, and $\eta \in \mathbb{R}^d$ is the weight vector for final states.
+Then, a sequence of word tokens $w=\langle w_0,...,w_n \rangle$ can be scored using the Forward algorithm, as follows,
+
+\begin{equation}
+p(\mathbf{w}) = \pi^T T(\epsilon)^{\ast}  \left( \prod_{i=1}^{n} T(w_i) T(\epsilon)^\ast  \right) \eta
+\end{equation}
+
+where $T^* = \sum_{j=0}^\infty T^j$, which can be approximated by its first order expansion for computational reasons \cite{schwartz2018sopa} as $T^* \approx I + T$.
+The transition function $T$, is defined as follows,
+
+\begin{equation}
+[T(w)]_{i,j} = 
+\left \{
+	\begin{array}{ll}
+		E(u_i \cdot v_w + a_i), & \mbox{if} j=i \mbox{ (self-loop)} \\
+		E(w_i \cdot v_w + b_i), & \mbox{if} j=i+1 \\
+		0, & otherwise
+	\end{array}
+\right .
+\end{equation}
+
+where $u_i$ and $w_i$ are weight parameters, $a_i$ and $b_i$ are bias terms, $v_w$ is the embedding representation of token $w$, and $E$ is an encoding function. \citet{schwartz2018sopa} propose the sigmoid as encoding function in order to discourage the model from following too many self loops and keep the match length as close as possible to the number of states $d$.
+
 
 \subsection{SoPa as a WFSA}
 
