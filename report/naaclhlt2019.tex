@@ -19,7 +19,7 @@
 
 \usepackage{url}
 
-%\aclfinalcopy % Uncomment this line for the final submission
+\aclfinalcopy % Uncomment this line for the final submission
 %\def\aclpaperid{***} %  Enter the acl Paper ID here
 
 %\setlength\titlebox{5cm}
@@ -30,18 +30,22 @@
 
 \newcommand\BibTeX{B{\sc ib}\TeX}
 
-\title{Cross-domain Soft Patterns for Sentiment Analysis}
+\title{Domain Adaptation of Neural Soft Patterns for Sentiment Analysis}
 
 \author{Ronald Cardenas Acosta\\
+  Faculty of Information and Communication Technology \\
   University of Malta \\
   {\tt ronald.cardenas.18@um.edu.mt} \\}
 
-\date{}
+\date{\today}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-  This report describes experiments 
+  This report describes experiments on domain adaptation for the task of sentiment analysis.
+  We build upon the recently proposed {\sc SoPa} \cite{schwartz2018sopa}, a hybrid CNN-RNN architecture that mimics the behaviour of a Weighted Finite State Automata.
+  {\sc SoPa} supports partial matches of end-to-end learned lexical patterns, providing an interpretable framework in which a thorough analysis of matched phrases is possible.
+  We find that patterns inferred from a source domain can be adapted to a related target domain in order to match phrases relevant to said target domain, although with marginal gains in classification accuracy.
 \end{abstract}
 
 
@@ -53,13 +57,17 @@ The objective of domain adaptation techniques is to adapt a hypothesis trained o
 These techniques have been applied to a variety of NLP tasks such as sentiment analysis \cite{blitzer2007biographies,mcauley2013hidden,mcauley2015image,ruder2018strong}, style transfer in text generation \cite{fu2018style,NIPS2018_7959,peng-etal-2018-towards}, textual and visual question answering \cite{chao2018cross,zhao2018finding}, and machine translation \cite{etchegoyhen2018evaluating,britz2017effective}, to name a few.
 
 In the case of sentiment analysis of online user reviews, previous work has sought effective ways of transfer learning between product categories \cite{blitzer2007biographies,ruder2018strong}. However, the task has been proven to be challenging since sentiment is expressed differently in different domains.
-For instance, \citet{blitzer2007biographies} identifies three types of feature behaviour across domains: (a) features that are highly predictive in the source domain but not in the target domain, (b) features that are highly predictive in the target domain but not in the source domain, and (c) features that positively predictive in the source domain but negatively predictive in the target domain (or viceversa).
+For instance, \citet{blitzer2007biographies} identifies three types of feature behaviour across domains: (a) features that are highly predictive in the source domain but not in the target domain, (b) features that are highly predictive in the target domain but not in the source domain, and (c) features that are positively predictive in the source domain but are negatively predictive in the target domain (or viceversa).
 
 In this report, we focus on unsupervised domain adaptation for the task of sentiment analysis, transfering from a single source domain into a single target domain.
 We build upon the recently proposed {\sc SoPa} \cite{schwartz2018sopa}, a neural architecture that mimic the behaviour of a Weighted Finite State Machine.
 {\sc SoPa} is able to learn soft lexical patterns, i.e.\ word patterns that might include a (possibly empty) wild card.
 We investigate the performance of {\sc SoPa} under a self-training setup following calibration procedures proposed by \citet{ruder2018strong}.
-Experiments on Amazon online reviews of two product categires show promising results.
+Experiments on Amazon online reviews of two product categores show marginal improvements over a direct transfer approach.
+However, adapted patterns succesfully score phrases relevant to the target domain higher than not adapted patterns. 
+Clearly, the adaptation method shows plenty room for improvement.
+
+
 
 % what is sent analizis
 % why is domain adp important for sent analisis
@@ -74,9 +82,9 @@ Experiments on Amazon online reviews of two product categires show promising res
 Early work on domain adaptation for sentiment analysis, namely non-neural approaches, reports that transfering from a source domain closer to the target domain yields better performance than combining several significantly varied domains \cite{blitzer2007biographies,aue2005customizing}.
 One identified reason is the vocabulary mismatch between domains, leading to scenarios where features drawn from one domain are not present in the other or contradict each other, as reported by \citet{blitzer2007biographies}.
 In the advent of neural networks, this problem is partially addressed with continuous representation of words. A more direct approach is taken by \citet{barnes2018projecting} who projects embeddings from both source and target domains into a common space in an adversarial setup.
-Furthermore, most neural architectures proposed so far rely on pretrained word embeddings that could be considered domain-independent given the datasets these embededdings trained on \cite{pennington2014glove,Peters:2018}. These huge benmark datasets are meant to be as varied as possible in terms of domains, e.g. Wikipedia, CommonCrawl.
+Furthermore, most neural architectures proposed so far rely on pretrained word embeddings that could be considered domain-independent given the datasets these embededdings were trained on \cite{pennington2014glove,Peters:2018}. These huge benmark datasets, e.g. Wikipedia, CommonCrawl, are meant to be as varied as possible in terms of domains.
 
-However, highly specific domains will present word types that are likely not represented in these pretrained representations. In this case, a model will rely on the embedding module's robutness to represent OOV types. In this scenario, \cite{schwartz2018sopa} proposes {\sc SoPa}, a model that mimics the behaviour of a Weighted Finite State Machine. The model itself can be regarded as a restricted case of a one-layer CNN that consumes the input one token at a time, like an RNN. The architecture shifts the representation robustness from the token level to the phrase level by modelling a soft version of traditional lexical patterns. The model learns to represent fixed-length patterns of words with possibly empty components. For example, a pattern can match  the sequence {\it A B C} as well as {\it A * C}.
+However, highly specific domains will present word types that are likely not represented in these pretrained representations. In this case, a model will rely on the embedding module's robutness to represent OOV types. In this scenario, \cite{schwartz2018sopa} proposes {\sc SoPa}, a model that mimics the behaviour of a Weighted Finite State Machine. The model itself can be regarded as a restricted case of a one-layer CNN that consumes the input one token at a time, like an RNN. The architecture shifts the representation robustness from the token level to the phrase level by modelling a soft version of traditional lexical patterns. The model learns to represent fixed-length patterns of words with possibly empty or extra components. For example, a soft pattern could match  the sequence {\it A B C} as well as {\it A * C}.
 
 The performance of {\sc SoPa} is tested by \citet{schwartz2018sopa} for the task of sentiment analysis in single domain scenarios. In this report, we investigate the performance of  {\sc SoPa} under a transfer learning scenario from one source domain (Movies \& TV) to one target domain (Games).
 
@@ -86,7 +94,7 @@ The performance of {\sc SoPa} is tested by \citet{schwartz2018sopa} for the task
 % --> chance to explicitly model vocab mismatch
 % sopa repr is orthogonal to sota models, can be used as an extra repr layer on top of word embeddings
 
-\section{Soft Patterns}
+\section{WSFAs and Soft Patterns}
 
 A soft pattern, as introduced by \citet{davidov2010enhanced}, is a pattern that supports partial matching on a given span of text by skipping some words of the pattern.
 Let WFSA-$\epsilon$ be a WFSA that support $\epsilon$ transitions (a transition that skips an input word) as well as self-loops (a transition that repeats the insertion of an input word).
@@ -95,12 +103,18 @@ Then, a sequence of word tokens $w=\langle w_0,...,w_n \rangle$ can be scored us
 
 \begin{equation}
 p(\mathbf{w}) = \pi^T T(\epsilon)^{\ast}  \left( \prod_{i=1}^{n} T(w_i) T(\epsilon)^\ast  \right) \eta
+\label{eq:score}
 \end{equation}
 
-where $T^* = \sum_{j=0}^\infty T^j$, which can be approximated by its first order expansion for computational reasons \cite{schwartz2018sopa} as $T^* \approx I + T$.
-The transition function $T$, is defined as follows,
+where $T^* = \sum_{j=0}^\infty T^j$, which can be approximated by its first order expansion for computational reasons as $T^* \approx I + T$. 
+By doing so, the pattern would allow only one $\epsilon$-transition per match.
+
+\paragraph{A pattern as a neural WSFA.}
+A WFSA based on neural weights has the potential to support partial matchings for a given pattern.
+Let a pattern of fixed length $d$ be instanciated by a specific transition function $T$ which is defined as follows,
 
 \begin{equation}
+\small
 [T(w)]_{i,j} = 
 \left \{
 	\begin{array}{ll}
@@ -109,37 +123,45 @@ The transition function $T$, is defined as follows,
 		0, & otherwise
 	\end{array}
 \right .
+\label{eq:transition}
 \end{equation}
 
 where $u_i$ and $w_i$ are weight parameters, $a_i$ and $b_i$ are bias terms, $v_w$ is the embedding representation of token $w$, and $E$ is an encoding function. \citet{schwartz2018sopa} propose the sigmoid as encoding function in order to discourage the model from following too many self loops and keep the match length as close as possible to the number of states $d$.
 
+Equation~\ref{eq:transition} also presents an interesting property of the transition matrix. The tradeoff between magnitudes of $w_i$ and $b_i$ allows the pattern to vary the matching range from a specific word form (a large  $w_i$ and a small$b_i$) to any word form (a small  $w_i$ and a large $b_i$).
 
-\subsection{SoPa as a WFSA}
+\paragraph{Scoring with a pattern.}
+Given a pattern $F$, a word sequence is consumed one token at a time following Equation~\ref{eq:score}.
+At each timestep, the pattern can choose between three possible actions: (a) transitioning to the next state and consume one token, (b) to not transition to the next state and consume a token (a self-loop), or (c) transition to the next state and not consume a token (an $\epsilon$-transition). 
+At each timestep, the highest scoring path though $F$ is calculated by restricting $F$ to the max-product semiring. 
+Then, the final document score obtained by a given pattern is the maximum score obtained after consuming all tokens.
 
-Let the WSFA with $\epsilon$ transitions, i.e.\ a transition that does not consume a token, be defined by the tuple 
-
-what sopa defines and does for 1 pattern
+It is worth noting that at a given timestep, the score distribution over states depends on the current token and the previous distribution of states. In this sense, $F$ can be considered a single-layer RNN.
 
 
-how patterns are aggregated and scoring a document
-
-
-\subsection{Scoring a document}
+\paragraph{Scoring with SoPa.}
+So far we have considered only one pattern and the final score it obtains after consuming a whole document.
+The model proposed by \cite{schwartz2018sopa}, {\sc SoPa}, aggregates the final scores of many patterns of different lengths into a feature layer for classification.
 
 
 
 \section{Domain Adaptation with SoPa}
 
-explain training proc here
+We resort to the bootstrapping method of throttling self-training treating the {\sc SoPa} architecture as a black box.
+Let $\mathcal{D}_{src}=\langle X_{src},Y_{src} \rangle$ be the dataset in the source domain, composed of documents $X_{src}$ and their respective sentiment class labels $Y_{src}$.
+The training pipeline starts with the training of a {\sc SoPa} model $M$ on $\mathcal{D}_{src}$.
+Then, we proceed to self-train $M$ on unlabeled data in the target domain, $\mathcal{D}_{tgt}=\langle X_{tgt} \rangle$. At each iteration, $M$ provides probablity distributions over the class label set for all unlabeled documents in $X_{tgt}$. Following calibration procedures outlined by \cite{ruder2018strong}, we select the top {\it n} unlabeled instances according to their confidence prediction, namely the probability provided by $M$. These $n$ instances $\langle X'_{tgt},\hat{Y}_{tgt} \rangle$ are added to the training set $\mathcal{D}_{src}$ and $M$ is re-trained. Then, the next iteration takes place.
 
 
 \section{Experimental Setup}
 
-We build upon the implementation of SoPa introduced by \citet{schwartz2018sopa}.\footnote{\url{https://github.com/Noahs-ARK/soft_patterns}} All models are implemented in PyTorch\footnote{\url{https://pytorch.org/}}.
+% We build upon the implementation of SoPa introduced by \citet{schwartz2018sopa}.\footnote{\url{https://github.com/Noahs-ARK/soft_patterns}} 
+% All models are implemented in PyTorch\footnote{\url{https://pytorch.org/}}.
+
 
 \subsection{Dataset}
 
-We use the provided dataset, a balanced subset of the reviews data extracted by \citet{mcauley2015image}. The data consists of users reviews on two domains --movies and TV, and games--, extracted from Amazon.
+We use the provided dataset, a balanced subset of the reviews data extracted by \citet{mcauley2015image}. The data consists of users reviews on two domains --Movies \& TV, and Games--, extracted from Amazon.
 We use Movies \& TV category as source domain and Games as target domain. We extract a development subset from the source domain and further divide the target domain's data into unlabeled, development, and test splits. Table~\ref{table:data-splits} presents the sizes of each split considered in the experiments.
 
 \begin{table*}[]
@@ -156,9 +178,9 @@ Games (tgt)         & -                           & 5,000                    & 1
 
 \subsection{Training of source domain}
 
-We use pre-trained 300-dimensional GloVe 840B embeddings \citet{pennington2014glove} normalized to unit length. Training was performed using Adam \cite{kingma2014adam} as optimizer.
+We use pre-trained 300-dimensional GloVe 840B embeddings \citet{pennington2014glove} normalized to unit length. Training of the {\sc SoPa} model was performed using Adam \cite{kingma2014adam} as optimizer.
 
-For hyper-parameter tunning, we resort to a subset of the training and development source data, consisting of 10,000 and 5,000 instances, respectively. These subsets were sampled following a uniform distribution without replacement. We use a Tree-structured Parzen Estimator (TPE) optimization model over 30 iterations\footnote{We use HyperOpt library (\url{http://hyperopt.github.io/hyperopt/})}. Table~\ref{table:param-tuning} shows the range of hyper-paramter values explored and their optimal values.
+For hyper-parameter tunning, we resort to a subset of the training and development source data consisting of 10,000 and 5,000 instances, respectively. These subsets were sampled without replacement following a uniform distribution. We use a Tree-structured Parzen Estimator (TPE) optimization model over 30 iterations\footnote{We use HyperOpt library (\url{http://hyperopt.github.io/hyperopt/})}. Table~\ref{table:param-tuning} shows the range of hyper-parameter values explored and the optimal values found.
 
 \begin{table*}[]
 \centering
@@ -171,19 +193,125 @@ Dropout                               & 0--0.2                                  
 MLP hid. dim.                         & 100--300                                                                                         & 100                          \\ \hline
 Batch size                            & 10--64                                                                                           & 20                           \\ \hline
 \end{tabular}
-\caption{Range and optimal values of hyper-parameters tuned.}
+\caption{Range and optimal values of hyper-parameters tuned over source domain data.}
 \label{table:param-tuning}
 \end{table*}
 
 
-\subsection{Self-training of target domain}
+\subsection{Domain adaptation models}
+We take as baseline a model trained only over the source domain data. This model is used to obtain predictions in the target domain without any sort of adaptation, i.e.\ under a direct transfer approach.
+We call this model $M_{src}$.
+
+Then, we experiment with throttling self-training as a domain adaptation technique.
+Preliminary experiments showed that choosing the top 80\% most confident prediction in each self-training iteration yielded the best results.
+We self-train for 3 iterations, each iteration training the model over $\mathcal{D}_{src} \cup \langle X'_{tgt},\hat{Y}_{tgt} \rangle$  for 10 epochs.
+The resulting model is called $M_{tgt}$.
 
 
+\subsection{Interpretability analysis}
+Following \citet{schwartz2018sopa}'s work, we isolate patterns inferred by both {\sc SoPa} models, $M_{src}$ and $M_{tgt}$, and analyse their contribution to the classification task.
+The final linear layer in the architecture of {\sc SoPa} allows us to directly analize the contribution of each pattern's final score for certain document.
+This contribution is defined as the difference in accuracy after zeroing out the score of a pattern under a leave-one-out setup.
 
 
 \section{Results and Discussion}
 
+\subsection{Domain adaptation}
+For comparison purposes, we report results of the baseline model over the source domain.
+This model, $M_{src}$, which was tuned and optimized over the source domain, obtains 82.02\% of accuracy over the source domain test set.
 
+Table~\ref{table:tgt-res} presents results on the target domain before and after adaptation of the baseline.
+It can observed that a self-training approach  ($M_{tgt}$) marginally improves over a direct transfer approach ($M_src$).
+This behaviour can be attributed to the limited amount of unlabeled data and few iterations of self-training performed.
+
+Our pipeline could also benefit from improvements orthogonal  to the architecture itself, such as the usage of more contextualized pre-trained word embeddings \cite{Peters:2018,devlin2018bert}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+  & dev   & test  \\ \hline
+$M_{src}$ & 80.20 & 80.35 \\ \hline
+$M_{tgt}$ & 80.76 & 80.65 \\ \hline
+\end{tabular}
+\caption{Sentiment analizis results on the target domain {\it Games} of {\sc SoPa} model trained only on source domain data ($M_{src}$) and self-trained {\sc SoPa} model ($M_{tgt}$).}
+\label{table:tgt-res}
+\end{table}
+
+\subsection{Interpretability of patterns}
+We analize the interpretability of the patterns inferred by the adapted model, $M_{tgt}$.
+Table~\ref{table:top-phrases} presents the top scored phrases in the development set, grouped by length, along with the gold label associated with the document these phrases appear in.
+We observe that negative phrases, such as {\it rudely dissapointed} and {\it so lame}, are correctly associated with negative sentiments (label 0). 
+Analogously, positive gaming--related phrases, such as {\it multiplayer capability} and {\it ps-2 memorabilia}, are associated with positive sentiments (label 1).
+
+It is also worth noting the preference of the model to include $\epsilon$-transitions in order to match shorter relevant phrases.
+
+\subsection{Interpretability of predictions}
+We futther analize the interpretability of predictions by inspecting the top scoring patterns for a certain document.
+Table~\ref{table:prediction} presents a sample instance in which the baseline fails to predict the correct label but the adapted model correctly predicts it.
+The sample text talks about an NFL game and mentions several --back then-- famous players' names such as\ {\it tom hammond} and {\it chris collinsworth}.
+
+On one hand, we observe that patterns inferred by $M_{src}$ weight proper names highly, probably because a movie review is most likely to mention names of actors and actresses.
+On the other hand, we observe that $M_{tgt}$ managed to diversify the matching space of the inferred patterns. For example, the top contributing pattern includes the version of the game (``{\it '10}") in addition to the player's name. Furthermore, a phrase relevant to gaming is now highly scored (``{\it new features}").
+
+Here as well, we observe the soft nature of the patterns inferred, indicated by the presence of $\epsilon$-transitions in all observed patterns.
+
+
+\begin{table*}[]
+\centering
+\begin{tabular}{|l|llllll|}
+\hline
+Text                                                                        & \multicolumn{6}{l|}{i just got madden 10 and also have '08 , so i will be comparing this to those two ...} \\
+                                                                            & \multicolumn{6}{l|}{... plus the updated rosters and new features on superstar mode ...}                   \\
+                                                                            & \multicolumn{6}{l|}{... '10 has chris collinsworth and tom hammond ...}                                    \\
+                                                                            & \multicolumn{6}{l|}{... i really do not like tom hammond ...}                                              \\
+                                                                            & \multicolumn{6}{l|}{... i think it is better , and completely worth it .}                                  \\
+Gold label                                                                  & 1               &                  &             &                 &                   &                   \\ \hline
+Model                                                                       & $M_{src}$       &                  &             &                 &                   &                   \\
+Prediction                                                                  & 0               &                  &             &                 &                   &                   \\
+\begin{tabular}[c]{@{}l@{}}Top contributing\\ patterns (score)\end{tabular} & (0.263)        & $\epsilon$       & and         & tom             & hammond           &                   \\
+                                                                            & (0.263)        & $\epsilon$       & chris       & $\epsilon$      & collinsworth      &                   \\
+                                                                            & (0.263)        & $\epsilon$       & tom         & hammond         &                   &                   \\ \hline
+Model                                                                       & $M_{tgt}$       &                  &             &                 &                   &                   \\
+Prediction                                                                  & 1               &                  &             &                 &                   &                   \\
+\begin{tabular}[c]{@{}l@{}}Top contributing\\ patterns (score)\end{tabular} & (0.668)         & '10              & has         & chris           & $\epsilon$        & collinsworth      \\
+                                                                            & (0.667)         & $\epsilon$       & tom         & $\epsilon$      & hammond           &                   \\
+                                                                            & (0.647)         & $\epsilon$       & new         & features        &                   &                   \\ \hline
+\end{tabular}
+\caption{Text and gold label of sample instance from the development set (top row), prediction and top contributing patterns according to the baseline (middle row) and domain--adapted model (bottom row). $\epsilon$: $\epsilon$-transition.}
+\label{table:prediction}
+\end{table*}
+
+
+
+
+
+\begin{table*}[]
+\centering
+\begin{tabular}{|c|lllll|c|}
+\hline
+Length of pattern & \multicolumn{5}{l|}{Top scoring phrases}                      & Gold label \\ \hline
+4                 & multplayer   & capability & $\epsilon$   & (           &      & 1          \\
+                  & dissapointed & by         & $\epsilon$   & it          &      & 0          \\
+                  & $\epsilon$   & gameplay   & !            & there       &      & 1          \\
+                  & suggest      & looking    & around       & for         &      & 0          \\
+                  & a            & $\epsilon$ & ps-2         & memorabilia &      & 1          \\ \hline
+5                 & $\epsilon$   & 's         & just         & so          & lame & 0          \\
+                  & $\epsilon$   & rudely     & dissapointed & by          & it   & 0          \\
+                  & no           & $\epsilon$ & more         & of          & that & 1          \\
+                  & great        & $\epsilon$ & idea         & :           & take & 0          \\
+                  & $\epsilon$   & multplayer & $\epsilon$   & capability  & (    & 1          \\ \hline
+\end{tabular}
+\caption{Top scoring phrases and the gold labels of the document they appear in the development set according to patterns of length 4 and 5 (one pattern per row).}
+\label{table:top-phrases}
+\end{table*}
+
+
+\section{Conclusion}
+
+We investigate the behaviour of {\sc SoPa}, a neural architecture with WFST-like inference recently proposed by \citet{schwartz2018sopa} for the task of sentiment analysis of online user reviews under domain shift. We experiment with a self-training method for domain adaptation considering calibration procedures suitable for neural networks.
+The soft nature of the patterns inferred by {\sc SoPa}, parameterized by their transition matrixes, provides an interpretable framework suitable to analyze how pattern scoring changes after adapting to another domain.
+When transfering from a related target domain (from Movies \& TV to Games) we obtain an improvement of classification accuracy, although marginal. However, under closer inspection, we observe that the adapted patterns match phrases highly relevant to the target domain.
 
 
 \bibliographystyle{acl_natbib}

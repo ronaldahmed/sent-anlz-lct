@@ -1,0 +1,55 @@
+
+source
+
+1   0   *START* *START* *START* *START* *START* i just got madden 10 and also have '08 , so i will be comparing this to those two . this game is really good compared to '08 , but not as good in some aspects as '10 . if you like the nfl , and are on a tight budget , go for this game . if you have a lot of money , and like the nfl , just skip it and get '10 . the ui is way better on this game than '08 and the graphics are better . plus the updated rosters and new features on superstar mode . if you have '08 and would like an upgrade , but do n't want to dish out $ 40 , get this . you 'll just have to create some players and perform some trades . there is one thing that i like better about this game , and that is that it still has john madden and al michaels . '10 has chris collinsworth and tom hammond . i really do not like tom hammond . but , other than that , i think you should get '10 . i think it is better , and completely worth it . *END* *END* *END* *END* *END* All in, predicted: 0.737   All in, not-predicted: 0.263    Leave one out: +res: 0:0.737 2:0.737 4:0.737 14:0.737 16:0.737 18:0.737 20:0.737 24:0.737 9:0.737 3:0.734 -res: 15:-0.263 19:-0.263 26:-0.263 12:-0.263 6:-0.263 23:-0.263 10:-0.262 28:-0.262 25:-0.257 22:-0.250 Patt scores: 27:2,622.218 26:2,391.507 19:2,267.886 24:2,223.038 4:2,149.577 29:2,077.659 15:2,000.578 23:1,625.865 0:1,376.468 5:1,367.173
+Top ten deltas:
+0 HP has            HP chris          HP collinsworth   
+2 ep                HP chris          HP collinsworth   
+4 HP chris          ep                HP collinsworth   
+14 HP collinsworth   ep                HP and            HP tom            
+16 HP *START*        HP *START*        ep                HP *START*        
+18 HP *START*        HP *START*        ep                HP *START*        
+20 ep                HP *START*        ep                HP *START*        HP *START*        
+24 ep                HP chris          HP collinsworth   HP and            HP tom            
+9 ep                HP chris          HP collinsworth   
+3 ep                HP chris          HP collinsworth   
+Top ten negative deltas:
+15 ep                HP and            HP tom            HP hammond        
+19 HP *START*        ep                HP *START*        HP *START*        
+26 HP *START*        ep                HP *START*        ep                HP *START*        
+12 ep                HP chris          ep                HP collinsworth   
+6 ep                HP tom            HP hammond        
+23 HP madden         HP and            HP al             ep                HP michaels       
+10 HP *START*        ep                HP *START*        HP *START*        
+28 ep                HP *START*        HP *START*        ep                HP *START*        
+25 ep                HP *START*        ep                HP *START*        HP *START*        
+22 HP *START*        ep                HP *START*        HP *START*        HP *START*        
+
+
+###############################################################################
+
+target
+
+1   1   *START* *START* *START* *START* *START* i just got madden 10 and also have '08 , so i will be comparing this to those two . this game is really good compared to '08 , but not as good in some aspects as '10 . if you like the nfl , and are on a tight budget , go for this game . if you have a lot of money , and like the nfl , just skip it and get '10 . the ui is way better on this game than '08 and the graphics are better . plus the updated rosters and new features on superstar mode . if you have '08 and would like an upgrade , but do n't want to dish out $ 40 , get this . you 'll just have to create some players and perform some trades . there is one thing that i like better about this game , and that is that it still has john madden and al michaels . '10 has chris collinsworth and tom hammond . i really do not like tom hammond . but , other than that , i think you should get '10 . i think it is better , and completely worth it . *END* *END* *END* *END* *END* All in, predicted: 0.668   All in, not-predicted: 0.332    Leave one out: +res: 19:0.668 22:0.668 23:0.668 15:0.667 6:0.647 8:0.456 11:0.369 1:0.329 4:0.238 17:0.083 -res: 27:-0.332 0:-0.332 24:-0.332 14:-0.332 5:-0.332 16:-0.331 18:-0.316 2:-0.290 12:-0.289 26:-0.281 Patt scores: 29:1,892.540 0:1,759.489 19:1,635.877 24:1,470.964 23:1,464.436 22:1,377.376 15:1,320.402 27:1,220.313 4:1,220.097 16:1,196.765
+Top ten deltas:
+19 HP *START*        ep                HP *START*        HP *START*        
+22 HP *START*        ep                HP *START*        HP *START*        HP *START*        
+23 HP '10            HP has            HP chris          ep                HP collinsworth   
+15 ep                HP tom            ep                HP hammond        
+6 ep                HP new            HP features       
+8 ep                HP chris          HP collinsworth   
+11 HP *START*        HP *START*        HP *START*        HP *START*        
+1 HP chris          ep                HP collinsworth   
+4 HP chris          ep                HP collinsworth   
+17 HP *START*        ep                HP *START*        HP *START*        
+Top ten negative deltas:
+27 ep                HP *START*        HP *START*        ep                HP *START*        
+0 HP ,              HP but            HP not            
+24 ep                HP *START*        HP *START*        HP *START*        HP *START*        
+14 HP compared       ep                HP to             HP '08            
+5 HP chris          ep                HP collinsworth   
+16 HP *START*        HP *START*        ep                HP *START*        
+18 HP *START*        HP *START*        ep                HP *START*        
+2 ep                HP chris          HP collinsworth   
+12 ep                HP al             ep                HP michaels       
+26 HP *START*        ep                HP *START*        ep                HP *START*        

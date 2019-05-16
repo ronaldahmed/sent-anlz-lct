@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{19}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Aue and Gamon(2005)}]{aue2005customizing}
@@ -42,6 +42,13 @@ Dmitry Davidov, Oren Tsur, and Ari Rappoport. 2010.
 \newblock In \emph{Proceedings of the 23rd international conference on
   computational linguistics: posters}, pages 241--249. Association for
   Computational Linguistics.
+
+\bibitem[{Devlin et~al.(2018)Devlin, Chang, Lee, and
+  Toutanova}]{devlin2018bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2018.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock \emph{arXiv preprint arXiv:1810.04805}.
 
 \bibitem[{Etchegoyhen et~al.(2018)Etchegoyhen, Torn{\'e}, Azpeitia, Garcia, and
   Matamala}]{etchegoyhen2018evaluating}
